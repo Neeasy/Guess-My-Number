@@ -7,8 +7,7 @@ let hightscore = 0;
 const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
-
-document.querySelector('.check').addEventListener('click', function () {
+const checkGuess = function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(typeof guess, guess);
   //если ничего не введено
@@ -39,7 +38,8 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('body').style.backgroundColor = '#A60000';
     }
   }
-});
+};
+document.querySelector('.check').addEventListener('click', checkGuess);
 
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
@@ -50,4 +50,10 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.guess').value = '';
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    checkGuess();
+  }
 });
